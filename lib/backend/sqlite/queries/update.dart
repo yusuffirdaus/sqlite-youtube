@@ -8,7 +8,7 @@ Future performInsertCustomer(
   String? city,
 }) {
   final query = '''
-insert into customers(name,address,city) values('$name','$address','$city');'
+insert into customers(name,address,city) values('$name','$address','$city');
 ''';
   return database.rawQuery(query);
 }
