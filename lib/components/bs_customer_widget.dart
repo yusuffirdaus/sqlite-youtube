@@ -517,7 +517,9 @@ class _BsCustomerWidgetState extends State<BsCustomerWidget>
                                               address: _model
                                                   .clonableURLTextController2
                                                   .text,
-                                              city: widget.city!,
+                                              city: _model
+                                                  .clonableURLTextController3
+                                                  .text,
                                             );
                                             Navigator.pop(context);
                                           }
