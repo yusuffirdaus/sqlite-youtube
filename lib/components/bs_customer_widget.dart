@@ -5,11 +5,15 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/upload_data.dart';
+import 'dart:math';
 import 'dart:ui';
 import '/custom_code/widgets/index.dart' as custom_widgets;
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'bs_customer_model.dart';
 export 'bs_customer_model.dart';
 
@@ -86,8 +90,8 @@ class _BsCustomerWidgetState extends State<BsCustomerWidget>
             curve: Curves.easeInOut,
             delay: 250.0.ms,
             duration: 600.0.ms,
-            begin: const Offset(0.0, 70.0),
-            end: const Offset(0.0, 0.0),
+            begin: Offset(0.0, 70.0),
+            end: Offset(0.0, 0.0),
           ),
         ],
       ),
@@ -125,15 +129,15 @@ class _BsCustomerWidgetState extends State<BsCustomerWidget>
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Padding(
-              padding: const EdgeInsets.all(12.0),
+              padding: EdgeInsets.all(12.0),
               child: Container(
                 width: double.infinity,
-                constraints: const BoxConstraints(
+                constraints: BoxConstraints(
                   maxWidth: 670.0,
                 ),
                 decoration: BoxDecoration(
                   color: FlutterFlowTheme.of(context).secondaryBackground,
-                  boxShadow: const [
+                  boxShadow: [
                     BoxShadow(
                       blurRadius: 3.0,
                       color: Color(0x33000000),
@@ -158,13 +162,13 @@ class _BsCustomerWidgetState extends State<BsCustomerWidget>
                         key: _model.formKey,
                         autovalidateMode: AutovalidateMode.always,
                         child: Padding(
-                          padding: const EdgeInsets.all(24.0),
+                          padding: EdgeInsets.all(24.0),
                           child: Column(
                             mainAxisSize: MainAxisSize.max,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 0.0, 0.0, 12.0),
                                 child: Row(
                                   mainAxisSize: MainAxisSize.max,
@@ -179,7 +183,7 @@ class _BsCustomerWidgetState extends State<BsCustomerWidget>
                                         children: [
                                           Padding(
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 0.0, 0.0, 4.0),
                                             child: Text(
                                               'Customers',
@@ -214,7 +218,7 @@ class _BsCustomerWidgetState extends State<BsCustomerWidget>
                                 ),
                               ),
                               Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 0.0, 0.0, 12.0),
                                 child: TextFormField(
                                   controller: _model.clonableURLTextController1,
@@ -280,7 +284,7 @@ class _BsCustomerWidgetState extends State<BsCustomerWidget>
                                 ),
                               ),
                               Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 0.0, 0.0, 12.0),
                                 child: TextFormField(
                                   controller: _model.clonableURLTextController2,
@@ -346,7 +350,7 @@ class _BsCustomerWidgetState extends State<BsCustomerWidget>
                                 ),
                               ),
                               Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 0.0, 0.0, 12.0),
                                 child: TextFormField(
                                   controller: _model.clonableURLTextController3,
@@ -413,9 +417,9 @@ class _BsCustomerWidgetState extends State<BsCustomerWidget>
                               ),
                               if (!widget.isEdit!)
                                 Align(
-                                  alignment: const AlignmentDirectional(0.0, 0.0),
+                                  alignment: AlignmentDirectional(0.0, 0.0),
                                   child: Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         0.0, 0.0, 0.0, 10.0),
                                     child: FFButtonWidget(
                                       onPressed: () async {
@@ -466,10 +470,10 @@ class _BsCustomerWidgetState extends State<BsCustomerWidget>
                                       text: 'Upload Photo',
                                       options: FFButtonOptions(
                                         height: 40.0,
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             24.0, 0.0, 24.0, 0.0),
                                         iconPadding:
-                                            const EdgeInsetsDirectional.fromSTEB(
+                                            EdgeInsetsDirectional.fromSTEB(
                                                 0.0, 0.0, 0.0, 0.0),
                                         color: FlutterFlowTheme.of(context)
                                             .primary,
@@ -481,7 +485,7 @@ class _BsCustomerWidgetState extends State<BsCustomerWidget>
                                               letterSpacing: 0.0,
                                             ),
                                         elevation: 3.0,
-                                        borderSide: const BorderSide(
+                                        borderSide: BorderSide(
                                           color: Colors.transparent,
                                           width: 1.0,
                                         ),
@@ -491,10 +495,11 @@ class _BsCustomerWidgetState extends State<BsCustomerWidget>
                                     ),
                                   ),
                                 ),
-                              if ((_model.uploadedLocalFile.bytes?.isNotEmpty ??
+                              if (_model.uploadedLocalFile != null &&
+                                  (_model.uploadedLocalFile.bytes?.isNotEmpty ??
                                       false))
                                 Align(
-                                  alignment: const AlignmentDirectional(0.0, 0.0),
+                                  alignment: AlignmentDirectional(0.0, 0.0),
                                   child: ClipRRect(
                                     borderRadius: BorderRadius.circular(8.0),
                                     child: Image.memory(
@@ -508,8 +513,8 @@ class _BsCustomerWidgetState extends State<BsCustomerWidget>
                                 ),
                               if (widget.isEdit ?? true)
                                 Align(
-                                  alignment: const AlignmentDirectional(0.0, 0.0),
-                                  child: SizedBox(
+                                  alignment: AlignmentDirectional(0.0, 0.0),
+                                  child: Container(
                                     width: 300.0,
                                     height: 300.0,
                                     child: custom_widgets.MemoryImageWidget(
@@ -520,7 +525,7 @@ class _BsCustomerWidgetState extends State<BsCustomerWidget>
                                   ),
                                 ),
                               Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     0.0, 16.0, 0.0, 0.0),
                                 child: Row(
                                   mainAxisSize: MainAxisSize.max,
@@ -528,7 +533,7 @@ class _BsCustomerWidgetState extends State<BsCustomerWidget>
                                   children: [
                                     if (widget.isEdit ?? true)
                                       Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             0.0, 0.0, 4.0, 0.0),
                                         child: FFButtonWidget(
                                           onPressed: () async {
@@ -538,9 +543,9 @@ class _BsCustomerWidgetState extends State<BsCustomerWidget>
                                                       builder:
                                                           (alertDialogContext) {
                                                         return AlertDialog(
-                                                          title: const Text(
+                                                          title: Text(
                                                               'Delete data'),
-                                                          content: const Text(
+                                                          content: Text(
                                                               'you will delete this data'),
                                                           actions: [
                                                             TextButton(
@@ -548,7 +553,7 @@ class _BsCustomerWidgetState extends State<BsCustomerWidget>
                                                                   Navigator.pop(
                                                                       alertDialogContext,
                                                                       false),
-                                                              child: const Text(
+                                                              child: Text(
                                                                   'Cancel'),
                                                             ),
                                                             TextButton(
@@ -556,7 +561,7 @@ class _BsCustomerWidgetState extends State<BsCustomerWidget>
                                                                   Navigator.pop(
                                                                       alertDialogContext,
                                                                       true),
-                                                              child: const Text(
+                                                              child: Text(
                                                                   'Confirm'),
                                                             ),
                                                           ],
@@ -576,10 +581,10 @@ class _BsCustomerWidgetState extends State<BsCustomerWidget>
                                           options: FFButtonOptions(
                                             height: 50.0,
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     32.0, 0.0, 32.0, 0.0),
                                             iconPadding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 0.0, 0.0, 0.0),
                                             color: FlutterFlowTheme.of(context)
                                                 .tertiary,
@@ -592,7 +597,7 @@ class _BsCustomerWidgetState extends State<BsCustomerWidget>
                                                       letterSpacing: 0.0,
                                                     ),
                                             elevation: 2.0,
-                                            borderSide: const BorderSide(
+                                            borderSide: BorderSide(
                                               color: Colors.transparent,
                                               width: 1.0,
                                             ),
@@ -602,7 +607,7 @@ class _BsCustomerWidgetState extends State<BsCustomerWidget>
                                         ),
                                       ),
                                     Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           0.0, 0.0, 4.0, 0.0),
                                       child: FFButtonWidget(
                                         onPressed: () async {
@@ -643,10 +648,10 @@ class _BsCustomerWidgetState extends State<BsCustomerWidget>
                                         options: FFButtonOptions(
                                           height: 50.0,
                                           padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   32.0, 0.0, 32.0, 0.0),
                                           iconPadding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 0.0, 0.0, 0.0),
                                           color: FlutterFlowTheme.of(context)
                                               .primary,
@@ -659,7 +664,7 @@ class _BsCustomerWidgetState extends State<BsCustomerWidget>
                                                     letterSpacing: 0.0,
                                                   ),
                                           elevation: 2.0,
-                                          borderSide: const BorderSide(
+                                          borderSide: BorderSide(
                                             color: Colors.transparent,
                                             width: 1.0,
                                           ),
