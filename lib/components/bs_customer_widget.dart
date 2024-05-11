@@ -178,7 +178,7 @@ class _BsCustomerWidgetState extends State<BsCustomerWidget>
                                                 const EdgeInsetsDirectional.fromSTEB(
                                                     0.0, 0.0, 0.0, 4.0),
                                             child: Text(
-                                              'Customer',
+                                              'Customers',
                                               style:
                                                   FlutterFlowTheme.of(context)
                                                       .headlineMedium
