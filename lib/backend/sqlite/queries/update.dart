@@ -8,7 +8,7 @@ Future performInsertCustomer(
   String? city,
 }) {
   final query = '''
-insert into customers(name,address,city) values('$name','$address','$city');
+insert into customers(name,address,city) values('${name}','${address}','${city}');
 ''';
   return database.rawQuery(query);
 }
@@ -24,7 +24,7 @@ Future performUpdateCustomer(
   int? id,
 }) {
   final query = '''
-update  customers set name='$name', address='$address', city='$city' where id=$id
+update  customers set name='${name}', address='${address}', city='${city}' where id=${id}
 ''';
   return database.rawQuery(query);
 }
@@ -37,7 +37,7 @@ Future performDeleteCustomer(
   int? id,
 }) {
   final query = '''
-delete from customers where id = $id;
+delete from customers where id = ${id};
 ''';
   return database.rawQuery(query);
 }
