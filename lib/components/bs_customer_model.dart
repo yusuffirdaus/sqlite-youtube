@@ -18,6 +18,9 @@ class BsCustomerModel extends FlutterFlowModel<BsCustomerWidget> {
   FocusNode? clonableURLFocusNode3;
   TextEditingController? clonableURLTextController3;
   String? Function(BuildContext, String?)? clonableURLTextController3Validator;
+  bool isDataUploading = false;
+  FFUploadedFile uploadedLocalFile =
+      FFUploadedFile(bytes: Uint8List.fromList([]));
 
   @override
   void initState(BuildContext context) {}
