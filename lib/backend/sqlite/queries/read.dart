@@ -25,6 +25,7 @@ class ReadCustomerRow extends SqliteRow {
   String? get name => data['name'] as String?;
   String? get address => data['address'] as String?;
   String? get city => data['city'] as String?;
+  String? get image => data['image'] as String?;
 }
 
 /// END READ CUSTOMER

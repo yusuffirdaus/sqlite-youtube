@@ -149,6 +149,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                     address: listViewReadCustomerRow.address,
                                     city: listViewReadCustomerRow.city,
                                     id: listViewReadCustomerRow.id,
+                                    imageparam: listViewReadCustomerRow.image,
                                   ),
                                 ),
                               );
