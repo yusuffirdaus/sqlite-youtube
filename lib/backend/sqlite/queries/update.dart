@@ -9,7 +9,7 @@ Future performInsertCustomer(
   String? image,
 }) {
   final query = '''
-insert into customers(name,address,city,image) values('${name}','${address}','${city}','${image}');
+insert into students(name,address,city,image) values('${name}','${address}','${city}','${image}');
 ''';
   return database.rawQuery(query);
 }
@@ -25,7 +25,7 @@ Future performUpdateCustomer(
   int? id,
 }) {
   final query = '''
-update  customers set name='${name}', address='${address}', city='${city}' where id=${id}
+update  students set name='${name}', address='${address}', city='${city}' where id=${id}
 ''';
   return database.rawQuery(query);
 }
@@ -38,7 +38,7 @@ Future performDeleteCustomer(
   int? id,
 }) {
   final query = '''
-delete from customers where id = ${id};
+delete from students where id = ${id};
 ''';
   return database.rawQuery(query);
 }

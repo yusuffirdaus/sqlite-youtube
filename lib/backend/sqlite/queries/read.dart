@@ -13,7 +13,7 @@ Future<List<ReadCustomerRow>> performReadCustomer(
   Database database,
 ) {
   final query = '''
-select * from customers
+select * from students
 ''';
   return _readQuery(database, query, (d) => ReadCustomerRow(d));
 }
