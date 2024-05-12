@@ -23,7 +23,7 @@ class SQLiteManager {
     }
     _database = await initializeDatabaseFromDbFile(
       'sqliteyoutube',
-      'sqlite_youtube2.db',
+      'sqlite_youtube3.db',
     );
   }
 
